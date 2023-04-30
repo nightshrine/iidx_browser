@@ -93,11 +93,11 @@ main {
     position: relative;
 }
 
-.note-display:nth-child(2n) {
+#one-note-display,#three-note-display,#five-note-display,#seven-note-display {
     width: 72px;
     background-color: #2d2d2d;
 }
-.note-display:nth-child(2n+1) {
+#two-note-display,#four-note-display,#six-note-display {
     width: 60px;
 }
 
@@ -136,7 +136,7 @@ main {
     top: 300px;
     background-color: #ff7272;
 }
-.note-display:nth-child(2n) .note{
+#one-note-display .note, #three-note-display .note, #five-note-display .note, #seven-note-display .note{
     margin: 0 auto;
     width: 68px;
     height: 10px;
@@ -145,7 +145,7 @@ main {
     background-color: #dddddd;
     z-index: 0;
 }
-.note-display:nth-child(2n+1) .note{
+#two-note-display .note, #four-note-display .note, #six-note-display .note{
     margin: 0 auto;
     width: 56px;
     height: 10px;

@@ -13,6 +13,13 @@
                 </div>
                 <div id="setting_form">
                     <label>
+                        <p>1P / 2P</p>
+                        <select id="player" class="setting_input">
+                            <option value="1" selected>1P</option>
+                            <option value="2">2P</option>
+                        </select>
+                    </label>
+                    <label>
                         <p>SUDDEN</p>
                         <input type="range" id="sudden-slider" min="0" max="80" value="10">
                     </label>
@@ -102,19 +109,19 @@
                 <div id="game-lane">
                     <div class="scratch-display" id="scratch-display">
                     </div>
-                    <div class="note-display">
+                    <div class="note-display" id="one-note-display">
                     </div>
-                    <div class="note-display">
+                    <div class="note-display" id="two-note-display">
                     </div> 
-                    <div class="note-display">
+                    <div class="note-display" id="three-note-display">
                     </div>  
-                    <div class="note-display">
+                    <div class="note-display" id="four-note-display">
                     </div>
-                    <div class="note-display">
+                    <div class="note-display" id="five-note-display">
                     </div>
-                    <div class="note-display">
+                    <div class="note-display" id="six-note-display">
                     </div>
-                    <div class="note-display">
+                    <div class="note-display" id="seven-note-display">
                     </div>
                 </div>
                 <!-- リフト部分 -->

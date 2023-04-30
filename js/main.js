@@ -6,6 +6,7 @@ let notesDisplay = document.querySelectorAll('.note-display')
 let gameSudden = document.querySelector('#game-sudden')
 let gameLift = document.querySelector('#game-lift')
 
+let player = document.querySelector('#player')
 let suddenSlider = document.querySelector('#sudden-slider')
 let liftSlider = document.querySelector('#lift-slider')
 
@@ -75,7 +76,18 @@ const sSelectNotes = (notes_num) => {
 
 
 
-
+// Playerの変更
+player.addEventListener('change', () => {
+    let playerValue = player.value
+    let gameLane = document.querySelector('#game-lane')
+    let scratchDisplay = document.querySelector('#scratch-display')
+    gameLane.removeChild(scratchDisplay)
+    if (playerValue === '1') {
+        gameLane.insertAdjacentHTML('afterbegin',  '<div id="scratch-display" class="scratch-display"></div>');
+    } else if (playerValue === '2') {
+        gameLane.insertAdjacentHTML('beforeend',  '<div id="scratch-display" class="scratch-display"></div>');
+    }
+})
 // ノーツのアニメーション
 let suddenHeight = suddenSlider.value || 10
 let liftHeight = liftSlider.value || 10
@@ -184,6 +196,7 @@ startButton.addEventListener('click', () => {
                 newNote.remove();
             }, speed);
         })
+        scratchDisplay = document.querySelector('#scratch-display')
         if (scratchNoteRatio !== '0') {
             // スクラッチの作成
             let newScratch = document.createElement("div");
