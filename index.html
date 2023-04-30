@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>iidx_training</title>
+        <link rel="stylesheet" href="style/style.css">
+        <script src="js/main.js" defer></script>
+    </head>
+    <body>
+        <main>
+            <div id="setting">
+                <div id="setting_title">
+                    <h1>設定</h1>
+                </div>
+                <div id="setting_form">
+                    <label>
+                        <p>SUDDEN</p>
+                        <input type="range" id="sudden-slider" min="0" max="80" value="10">
+                    </label>
+                    <label>
+                        <p>LIFT</p>
+                        <input type="range" id="lift-slider" min="0" max="80" value="30">
+                    </label>
+                    <label>
+                        <p>緑数字: </p>
+                        <input type="number" class="setting_input" id="green-number" min="200" max="1200" value="330">
+                    </label>
+                    <label>
+                        <p>BPM: </p>
+                        <input type="number" class="setting_input" id="bpm" min="100" max="300" value="150">
+                    </label>
+                    <label>
+                        <p>key Interval</p>
+                        <select id="key-interval" class="setting_input">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="4" selected>4</option>
+                            <option value="8">8</option>
+                            <option value="12">12</option>
+                            <option value="16">16</option>
+                            <option value="24">24</option>
+                            <option value="32">32</option>
+                        </select>
+                    </label>
+                    <label>
+                        <p>scratch Interval</p>
+                        <select id="scratch-interval" class="setting_input">
+                            <option value="1" selected>1</option>
+                            <option value="2">2</option>
+                            <option value="4">4</option>
+                        </select>
+                    </label>
+                    <label>
+                        <p>S乱</p>
+                        <input type="checkbox" id="is-srand" class="setting_input">
+                    </label>
+                    <label>
+                        <p>scratch: </p>
+                        <input type="number" class="setting_input" id="scratch-note-ratio" min="0" max="100" value="0">
+                    </label>
+                    <label>
+                        <p>0notes: </p>
+                        <input type="number" class="setting_input" id="zero-note-ratio" value="0" min="0" max="100">
+                    </label>
+                    <label>
+                        <p>1notes: </p>
+                        <input type="number" class="setting_input" id="one-note-ratio" value="0" min="0" max="100">
+                    </label>
+                    <label>
+                        <p>2notes: </p>
+                        <input type="number" class="setting_input" id="two-note-ratio" value="0" min="0" max="100">
+                    </label>
+                    <label>
+                        <p>3notes: </p>
+                        <input type="number" class="setting_input" id="three-note-ratio" value="0" min="0" max="100">
+                    </label>
+                    <label>
+                        <p>4notes: </p>
+                        <input type="number" class="setting_input" id="four-note-ratio" value="0" min="0" max="100">
+                    </label>
+                    <label>
+                        <p>5notes: </p>
+                        <input type="number" class="setting_input" id="five-note-ratio" value="0" min="0" max="100">
+                    </label>
+                    <label>
+                        <p>6notes: </p>
+                        <input type="number" class="setting_input" id="six-note-ratio" value="0" min="0" max="100">
+                    </label>
+                    <label>
+                        <p>7notes: </p>
+                        <input type="number" class="setting_input" id="seven-note-ratio" value="0" min="0" max="100">
+                    </label>
+                    <button id="start-button">開始</button>
+                    <button id="stop-button">停止</button>
+                </div>
+            </div>
+
+            <div id="game-display">
+                <!-- SUDDEN部分 -->
+                <div id="game-sudden">
+                </div>
+                <!-- レーン部分 -->
+                <div id="game-lane">
+                    <div class="scratch-display" id="scratch-display">
+                    </div>
+                    <div class="note-display">
+                    </div>
+                    <div class="note-display">
+                    </div> 
+                    <div class="note-display">
+                    </div>  
+                    <div class="note-display">
+                    </div>
+                    <div class="note-display">
+                    </div>
+                    <div class="note-display">
+                    </div>
+                    <div class="note-display">
+                    </div>
+                </div>
+                <!-- リフト部分 -->
+                <div id="game-lift">
+                </div>
+            </div>
+        </main>
+
+    </body>
+</html>

@@ -1,0 +1,156 @@
+body {
+    margin: 0;
+    padding: 0;
+    color: #dddddd;
+    background-color: #222222;
+}
+
+main {
+    width: 1000px;
+    height: 950px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+
+
+/* setting css*/
+
+
+#setting {
+    width: 250px;
+    height: 95%;
+    border: 2px solid #dddddd;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#setting_form label{
+    display: flex;
+    align-items: center;
+    height: 25px;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+#setting #start-button {
+    margin-bottom: 20px;
+    width: 100%;
+    height: 50px;
+    background-color: #4366ff;
+    border: 4px solid #dddddd;
+    border-radius: 10px;
+    color: #dddddd;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+#setting #start-button:hover {
+    background-color: #18255d;
+}
+
+#setting #stop-button {
+    width: 100%;
+    height: 50px;
+    background-color: #ff4343;
+    border: 4px solid #dddddd;
+    border-radius: 10px;
+    color: #dddddd;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+#setting #stop-button:hover {
+    background-color: #5d1818;
+}
+
+
+/* game-display css*/
+
+#game-display {
+    height: 100%;
+    position: relative;
+}
+
+#game-lane {
+    width: 600px;
+    height: 100%;
+    border-top: 2px solid #dddddd;
+    border-right: 2px solid #dddddd;
+    border-left: 2px solid #dddddd;
+    display: flex;
+}
+
+#game-lane .scratch-display {
+    border-right: 1px solid #dddddd;
+    width: 128px;
+    position: relative;
+}
+
+#game-lane .note-display {
+    border-right: 1px solid #dddddd;
+    position: relative;
+}
+
+.note-display:nth-child(2n) {
+    width: 72px;
+    background-color: #2d2d2d;
+}
+.note-display:nth-child(2n+1) {
+    width: 60px;
+}
+
+/* sudden lift css */
+
+#game-display #game-sudden {
+    position: absolute;
+    width: 600px;
+    height: 10%;
+    top: 0;
+    background-color: #222222;
+    border: 2px solid #dddddd;
+    z-index: 10;
+}
+
+#game-display #game-lift {
+    position: absolute;
+    width: 600px;
+    height: 30%;
+    bottom: 0;
+    background-color: #222222;
+    border: 2px solid #dddddd;
+    border-top: 4px solid #ff0000;
+    z-index: 10;
+}
+
+
+/* note css*/
+
+.scratch-note {
+    margin: 0 auto;
+    width: 124px;
+    height: 10px;
+    position: absolute;
+    left: 2px;
+    top: 300px;
+    background-color: #ff7272;
+}
+.note-display:nth-child(2n) .note{
+    margin: 0 auto;
+    width: 68px;
+    height: 10px;
+    position: absolute;
+    left: 2px;
+    background-color: #dddddd;
+    z-index: 0;
+}
+.note-display:nth-child(2n+1) .note{
+    margin: 0 auto;
+    width: 56px;
+    height: 10px;
+    position: absolute;
+    left: 2px;
+    background-color: #4973ff;
+    z-index: 0;
+}
