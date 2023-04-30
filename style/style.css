@@ -29,40 +29,50 @@ main {
 #setting_form label{
     display: flex;
     align-items: center;
-    height: 25px;
+    height: 23px;
     justify-content: space-between;
     margin-bottom: 10px;
 }
 
-#setting #start-button {
-    margin-bottom: 20px;
+#setting button {
+    margin-bottom: 10px;
     width: 100%;
-    height: 50px;
-    background-color: #4366ff;
+    height: 40px;
     border: 4px solid #dddddd;
     border-radius: 10px;
     color: #dddddd;
     font-size: 20px;
     font-weight: bold;
     cursor: pointer;
+}
+
+#setting #start-button {
+    background-color: #4366ff;
 }
 #setting #start-button:hover {
     background-color: #18255d;
 }
 
 #setting #stop-button {
-    width: 100%;
-    height: 50px;
     background-color: #ff4343;
-    border: 4px solid #dddddd;
-    border-radius: 10px;
-    color: #dddddd;
-    font-size: 20px;
-    font-weight: bold;
-    cursor: pointer;
+    margin-bottom: 30px;
 }
 #setting #stop-button:hover {
     background-color: #5d1818;
+}
+
+#setting #reset-button {
+    background-color: #505050;
+}
+#setting #reset-button:hover {
+    background-color: #000000;
+}
+
+#setting #save-button {
+    background-color: #24a1a6;
+}
+#setting #save-button:hover {
+    background-color: #0d4b4f;
 }
 
 

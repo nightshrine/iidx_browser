@@ -1,5 +1,7 @@
 let startButton = document.querySelector('#start-button')
 let stopButton = document.querySelector('#stop-button')
+let resetButton = document.querySelector('#reset-button')
+let saveButton = document.querySelector('#save-button')
 
 let scratchDisplay = document.querySelector('#scratch-display')
 let notesDisplay = document.querySelectorAll('.note-display')
@@ -9,11 +11,65 @@ let gameLift = document.querySelector('#game-lift')
 let player = document.querySelector('#player')
 let suddenSlider = document.querySelector('#sudden-slider')
 let liftSlider = document.querySelector('#lift-slider')
+let suddenSliderValue = suddenSlider.value
+let liftSliderValue = liftSlider.value
+
+let greenNumber = document.querySelector('#green-number')
+
+let bpm = document.querySelector('#bpm')
+let keyIntervalValue = document.querySelector('#key-interval').value
 
 let keyInterval = document.querySelector('#key-interval')
 let scratchInterval = document.querySelector('#scratch-interval')
 
+
+let scratchIntervalValue = document.querySelector('#scratch-interval').value
+
+let isSrand = document.querySelector('#is-srand')
+let scratchNoteRatio = document.querySelector('#scratch-note-ratio')
+let zeroNoteRatio = document.querySelector('#zero-note-ratio')
+let oneNoteRatio = document.querySelector('#one-note-ratio')
+let twoNoteRatio = document.querySelector('#two-note-ratio')
+let threeNoteRatio = document.querySelector('#three-note-ratio')
+let fourNoteRatio = document.querySelector('#four-note-ratio')
+let fiveNoteRatio = document.querySelector('#five-note-ratio')
+let sixNoteRatio = document.querySelector('#six-note-ratio')
+let sevenNoteRatio = document.querySelector('#seven-note-ratio')
+
+
+
+
+
+
 let started = false
+
+window.onload = () => {
+    let settingSaveData = JSON.parse(localStorage.getItem('settingSaveData'))
+    if (settingSaveData) {
+        player.value = settingSaveData.playerValue
+        suddenSlider.value = settingSaveData.suddenSliderValue
+        liftSlider.value = settingSaveData.liftSliderValue
+        greenNumber.value = settingSaveData.greenNumberValue
+        bpm.value = settingSaveData.bpmValue
+        keyInterval.value = settingSaveData.keyIntervalValue
+        scratchInterval.value = settingSaveData.scratchIntervalValue
+        isSrand.checked = settingSaveData.isSrandChecked
+        scratchNoteRatio.value = settingSaveData.scratchNoteRatioValue
+        zeroNoteRatio.value = settingSaveData.zeroNoteRatioValue
+        oneNoteRatio.value = settingSaveData.oneNoteRatioValue
+        twoNoteRatio.value = settingSaveData.twoNoteRatioValue
+        threeNoteRatio.value = settingSaveData.threeNoteRatioValue
+        fourNoteRatio.value = settingSaveData.fourNoteRatioValue
+        fiveNoteRatio.value = settingSaveData.fiveNoteRatioValue
+        sixNoteRatio.value = settingSaveData.sixNoteRatioValue
+        sevenNoteRatio.value = settingSaveData.sevenNoteRatioValue
+
+        playerChange()
+        suddenChange()
+        liftChange()
+        scratchIntervalChange(scratchInterval.value)
+    }
+}
 
 
 // ノーツの個数を選択
@@ -77,7 +133,7 @@ const sSelectNotes = (notes_num) => {
 
 
 // Playerの変更
-player.addEventListener('change', () => {
+const playerChange = () => {
     let playerValue = player.value
     let gameLane = document.querySelector('#game-lane')
     let scratchDisplay = document.querySelector('#scratch-display')
@@ -87,28 +143,25 @@ player.addEventListener('change', () => {
     } else if (playerValue === '2') {
         gameLane.insertAdjacentHTML('beforeend',  '<div id="scratch-display" class="scratch-display"></div>');
     }
-})
-// ノーツのアニメーション
-let suddenHeight = suddenSlider.value || 10
-let liftHeight = liftSlider.value || 10
+}
 
-// SUDDENの変更
-suddenSlider.addEventListener('input', () => {
+// SUDDENとLIFTの変更
+
+const suddenChange = () => {
     gameSudden.style.height = suddenSlider.value + '%'
-    suddenHeight = suddenSlider.value
-    liftSlider.max = 90 - suddenHeight
-})
+    suddenSliderValue = suddenSlider.value
+    liftSlider.max = 90 - suddenSliderValue
+}
 
-// LIFTの変更
-liftSlider.addEventListener('input', () => {
+const liftChange = () => {
     gameLift.style.height = liftSlider.value  + '%'
-    liftHeight = liftSlider.value
-    suddenSlider.max = 90 - liftHeight
-})
+    liftSliderValue = liftSlider.value
+    suddenSlider.max = 90 - liftSliderValue
+}
 
+// スクラッチ間隔の変更
 
-
-keyInterval.addEventListener('input', () => {
+const scratchIntervalChange = (scratchIntervalInit = -1) => {
     let keyIntervalValue = keyInterval.value
     let intervals = [1,2,4,8,12,16,24,32]
     scratchInterval.innerHTML = ''
@@ -118,24 +171,38 @@ keyInterval.addEventListener('input', () => {
         }
         scratchInterval.innerHTML += `<option value="${interval}">${interval}</option>`
     }
-})
+    if (scratchIntervalInit === -1 || typeof(scratchIntervalInit) === 'object') {
+        scratchInterval.value = 1
+    } else {
+        scratchInterval.value = scratchIntervalInit
+    }
+}
+
+player.addEventListener('change', playerChange)
+
+suddenSlider.addEventListener('input', suddenChange)
+
+liftSlider.addEventListener('input', liftChange)
+
+keyInterval.addEventListener('input', scratchIntervalChange)
 
 
+// 以下は各ボタンの処理
 
 startButton.addEventListener('click', () => {
     if (started) {
         return
     }
     // ノーツの割合を取得
-    let scratchNoteRatio = document.querySelector('#scratch-note-ratio').value
-    let zeroNoteRatio = document.querySelector('#zero-note-ratio').value
-    let oneNoteRatio = document.querySelector('#one-note-ratio').value
-    let twoNoteRatio = document.querySelector('#two-note-ratio').value
-    let threeNoteRatio = document.querySelector('#three-note-ratio').value
-    let fourNoteRatio = document.querySelector('#four-note-ratio').value
-    let fiveNoteRatio = document.querySelector('#five-note-ratio').value
-    let sixNoteRatio = document.querySelector('#six-note-ratio').value
-    let sevenNoteRatio = document.querySelector('#seven-note-ratio').value
+    let scratchNoteRatioValue = document.querySelector('#scratch-note-ratio').value
+    let zeroNoteRatioValue = document.querySelector('#zero-note-ratio').value
+    let oneNoteRatioValue = document.querySelector('#one-note-ratio').value
+    let twoNoteRatioValue = document.querySelector('#two-note-ratio').value
+    let threeNoteRatioValue = document.querySelector('#three-note-ratio').value
+    let fourNoteRatioValue = document.querySelector('#four-note-ratio').value
+    let fiveNoteRatioValue = document.querySelector('#five-note-ratio').value
+    let sixNoteRatioValue = document.querySelector('#six-note-ratio').value
+    let sevenNoteRatioValue = document.querySelector('#seven-note-ratio').value
     // 緑数字
     let greenNumber = document.querySelector('#green-number').value
     // BPM, 1小節の拍数
@@ -155,8 +222,8 @@ startButton.addEventListener('click', () => {
 
     // 
     let noteAnimation = [
-        { top: `calc(${suddenHeight}% - 10px)` },
-        { top: `${100 - liftHeight}%` },
+        { top: `calc(${suddenSliderValue}% - 10px)` },
+        { top: `${100 - liftSliderValue}%` },
     ];
 
     started = true
@@ -167,7 +234,7 @@ startButton.addEventListener('click', () => {
         }
         // ノーツの作成
         // 0notesから7notesまでのそれぞれ出てくる確率を配列で渡す
-        let notes_rate_list = [zeroNoteRatio, oneNoteRatio, twoNoteRatio, threeNoteRatio, fourNoteRatio, fiveNoteRatio, sixNoteRatio, sevenNoteRatio]
+        let notes_rate_list = [zeroNoteRatioValue, oneNoteRatioValue, twoNoteRatioValue, threeNoteRatioValue, fourNoteRatioValue, fiveNoteRatioValue, sixNoteRatioValue, sevenNoteRatioValue]
         let notes_num = selectNotesNum(notes_rate_list)
         if (notes_num === -1) {
             console.log('ノーツの割合を入力してください')
@@ -197,7 +264,7 @@ startButton.addEventListener('click', () => {
             }, speed);
         })
         scratchDisplay = document.querySelector('#scratch-display')
-        if (scratchNoteRatio !== '0') {
+        if (scratchNoteRatioValue !== '0') {
             // スクラッチの作成
             let newScratch = document.createElement("div");
             newScratch.classList.add('scratch-note')
@@ -205,7 +272,7 @@ startButton.addEventListener('click', () => {
             if (scratchIntervalCount >= scratchIntervalJudge) {
                 scratchIntervalCount = 0;
                 let scratchRandom = Math.floor(Math.random() * 100)
-                if (scratchRandom < scratchNoteRatio) {
+                if (scratchRandom < scratchNoteRatioValue) {
                     newScratch.animate(noteAnimation, {
                         duration: speed, // 何秒見えるか
                     })
@@ -222,4 +289,56 @@ startButton.addEventListener('click', () => {
 
 stopButton.addEventListener('click', () => {
     started = false
+})
+
+resetButton.addEventListener('click', () => {
+    document.querySelector('#player').value = 1;
+    document.querySelector('#sudden-slider').value = 10;
+    document.querySelector('#lift-slider').value = 30;
+    document.querySelector('#green-number').value = 330; 
+    
+    document.querySelector('#bpm').value = 150;
+    document.querySelector('#key-interval').value = 4;
+    
+    document.querySelector('#scratch-interval').value = 1;
+    document.querySelector('#is-srand').checked = false;
+
+    document.querySelector('#scratch-note-ratio').value = 0;
+    document.querySelector('#zero-note-ratio').value = 0;
+    document.querySelector('#one-note-ratio').value = 0;
+    document.querySelector('#two-note-ratio').value = 0;
+    document.querySelector('#three-note-ratio').value = 0;
+    document.querySelector('#four-note-ratio').value = 0;
+    document.querySelector('#five-note-ratio').value = 0;
+    document.querySelector('#six-note-ratio').value = 0;
+    document.querySelector('#seven-note-ratio').value = 0;
+
+    // その他変更
+    playerChange()
+    suddenChange()
+    liftChange()
+    scratchIntervalChange()
+})
+
+saveButton.addEventListener('click', () => {
+    let settingSaveData = {
+        playerValue: document.querySelector('#player').value,
+        suddenSliderValue: document.querySelector('#sudden-slider').value,
+        liftSliderValue: document.querySelector('#lift-slider').value,
+        greenNumberValue: document.querySelector('#green-number').value,
+        bpmValue: document.querySelector('#bpm').value,
+        keyIntervalValue: document.querySelector('#key-interval').value,
+        scratchIntervalValue: document.querySelector('#scratch-interval').value,
+        isSrandChecked: document.querySelector('#is-srand').checked,
+        scratchNoteRatioValue: document.querySelector('#scratch-note-ratio').value,
+        zeroNoteRatioValue: document.querySelector('#zero-note-ratio').value,
+        oneNoteRatioValue: document.querySelector('#one-note-ratio').value,
+        twoNoteRatioValue: document.querySelector('#two-note-ratio').value,
+        threeNoteRatioValue: document.querySelector('#three-note-ratio').value,
+        fourNoteRatioValue: document.querySelector('#four-note-ratio').value,
+        fiveNoteRatioValue: document.querySelector('#five-note-ratio').value,
+        sixNoteRatioValue: document.querySelector('#six-note-ratio').value,
+        sevenNoteRatioValue: document.querySelector('#seven-note-ratio').value,
+    }
+    localStorage.setItem('settingSaveData', JSON.stringify(settingSaveData))
 })
