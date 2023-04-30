@@ -47,10 +47,3 @@ Key Intervalで設定したタイミングで、それぞれ何個のノーツ�
 
 ## 設定保存
 設定内容が、次回ロード時にも引き継がれます。設定内容はlocalStorageに保存されています。
-
-、lift、緑数字、BPMは言わずもがな
-・keyintervalで、１小節で何回ノーツが出現するか（4なら4拍子）
-・ScratchIntervalで、スクラッチがkeyintervalのうち、何回出現するか選べる。
-・S乱は、縦連が含まれる
-・scratchは、ScratchIntervalのうち、何%の確率でスクラッチがふってくるかを選べる（100にしておけば、しかるべきタイミングで必ず落ちてくる）
-・notes0~notes7でｌKeyinterval一回につき、それぞれがどのくらいの比率で落ちてくるかを選べる。
