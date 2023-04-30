@@ -75,6 +75,13 @@ main {
     background-color: #0d4b4f;
 }
 
+#setting #detail {
+    color: #dddddd;
+}
+#setting #detail:hover {
+    opacity: 0.7;
+}
+
 
 /* game-display css*/
 
