@@ -44,25 +44,25 @@ let sevenNoteRatio = document.querySelector('#seven-note-ratio')
 let started = false
 
 window.onload = () => {
-    let settingSaveData = JSON.parse(localStorage.getItem('settingSaveData'))
-    if (settingSaveData) {
-        player.value = settingSaveData.playerValue
-        suddenSlider.value = settingSaveData.suddenSliderValue
-        liftSlider.value = settingSaveData.liftSliderValue
-        greenNumber.value = settingSaveData.greenNumberValue
-        bpm.value = settingSaveData.bpmValue
-        keyInterval.value = settingSaveData.keyIntervalValue
-        scratchInterval.value = settingSaveData.scratchIntervalValue
-        isSrand.checked = settingSaveData.isSrandChecked
-        scratchNoteRatio.value = settingSaveData.scratchNoteRatioValue
-        zeroNoteRatio.value = settingSaveData.zeroNoteRatioValue
-        oneNoteRatio.value = settingSaveData.oneNoteRatioValue
-        twoNoteRatio.value = settingSaveData.twoNoteRatioValue
-        threeNoteRatio.value = settingSaveData.threeNoteRatioValue
-        fourNoteRatio.value = settingSaveData.fourNoteRatioValue
-        fiveNoteRatio.value = settingSaveData.fiveNoteRatioValue
-        sixNoteRatio.value = settingSaveData.sixNoteRatioValue
-        sevenNoteRatio.value = settingSaveData.sevenNoteRatioValue
+    let iidxSettingSaveData = JSON.parse(localStorage.getItem('iidxSettingSaveData'))
+    if (iidxSettingSaveData) {
+        player.value = iidxSettingSaveData.playerValue
+        suddenSlider.value = iidxSettingSaveData.suddenSliderValue
+        liftSlider.value = iidxSettingSaveData.liftSliderValue
+        greenNumber.value = iidxSettingSaveData.greenNumberValue
+        bpm.value = iidxSettingSaveData.bpmValue
+        keyInterval.value = iidxSettingSaveData.keyIntervalValue
+        scratchInterval.value = iidxSettingSaveData.scratchIntervalValue
+        isSrand.checked = iidxSettingSaveData.isSrandChecked
+        scratchNoteRatio.value = iidxSettingSaveData.scratchNoteRatioValue
+        zeroNoteRatio.value = iidxSettingSaveData.zeroNoteRatioValue
+        oneNoteRatio.value = iidxSettingSaveData.oneNoteRatioValue
+        twoNoteRatio.value = iidxSettingSaveData.twoNoteRatioValue
+        threeNoteRatio.value = iidxSettingSaveData.threeNoteRatioValue
+        fourNoteRatio.value = iidxSettingSaveData.fourNoteRatioValue
+        fiveNoteRatio.value = iidxSettingSaveData.fiveNoteRatioValue
+        sixNoteRatio.value = iidxSettingSaveData.sixNoteRatioValue
+        sevenNoteRatio.value = iidxSettingSaveData.sevenNoteRatioValue
 
         playerChange()
         suddenChange()
@@ -321,7 +321,7 @@ resetButton.addEventListener('click', () => {
 })
 
 saveButton.addEventListener('click', () => {
-    let settingSaveData = {
+    let iidxSettingSaveData = {
         playerValue: document.querySelector('#player').value,
         suddenSliderValue: document.querySelector('#sudden-slider').value,
         liftSliderValue: document.querySelector('#lift-slider').value,
@@ -340,5 +340,5 @@ saveButton.addEventListener('click', () => {
         sixNoteRatioValue: document.querySelector('#six-note-ratio').value,
         sevenNoteRatioValue: document.querySelector('#seven-note-ratio').value,
     }
-    localStorage.setItem('settingSaveData', JSON.stringify(settingSaveData))
+    localStorage.setItem('iidxSettingSaveData', JSON.stringify(iidxSettingSaveData))
 })
